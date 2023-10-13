@@ -1,3 +1,15 @@
+"""
+Module for processing university schedules from Excel files.
+
+Classes:
+    Schedule: Class for processing and storing university schedules.
+
+Methods:
+    parse_arguments: Function to parse command-line arguments for the script.
+
+Usage:
+    python script_name.py file1.xlsx file2.xlsx -o output_file.json
+"""
 import argparse
 import json
 import re
@@ -5,6 +17,28 @@ import pandas as pd
 
 
 class Schedule:
+    """
+        Class for processing and storing university schedules.
+
+        Attributes:
+            DAYS_NAME (list): List of day names.
+            _schedule_dict (dict): Dictionary to store the processed schedule.
+
+        Methods:
+            __init__: Initializes the Schedule class.
+            _extract_specialties_and_year: Extracts specialties and study year from a text.
+            _is_valid_time_range: Checks if the input string is a valid time range.
+            _get_specs_in_str: Extracts specialties mentioned in a string and returns the cleaned string.
+            _add_space_after_parenthesis: Adds a space after closing parenthesis if not present.
+            _get_groups: Extracts groups from the input string.
+            _get_week_array: Processes the input string to get an array of weeks.
+            _proccess_time_range: Processes the input string to get a dictionary of start, end, and full time.
+            _proccess_room: Processes the room information.
+            _add_to_table: Adds data to the schedule table.
+            procces_excels: Processes Excel files and populates the schedule dictionary.
+            save_to_json: Saves the schedule dictionary to a JSON file.
+            get_schedule_dict: Returns the schedule dictionary.
+    """
     DAYS_NAME = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', 'П`ятниця', 'Субота', 'Неділя']
     _schedule_dict = {}
 
@@ -16,13 +50,13 @@ class Schedule:
     @staticmethod
     def _extract_specialties_and_year(text):
         """
-        Extracts specialties and study year from the given text.
+        Extracts specialties and study year from a text.
 
         Args:
-        - text (str): Input text containing specialties and study year information.
+            text (str): Input text.
 
         Returns:
-        - tuple: A tuple containing a list of specialties and the study year.
+            tuple: Tuple containing a list of specialties and the study year.
         """
         specialty_matches = re.findall(r'[«"](.*?)[»"]', text)
         year_matches = re.findall(r'(\d+) р\.н\.', text)
@@ -35,13 +69,13 @@ class Schedule:
     @staticmethod
     def _is_valid_time_range(input_str: str):
         """
-        Checks if the input string represents a valid time range.
+        Checks if the input string is a valid time range.
 
         Args:
-        - input_str (str): Input string to be checked.
+            input_str (str): Input time range string.
 
         Returns:
-        - bool: True if the input string is a valid time range, False otherwise.
+            bool: True if the input is a valid time range, False otherwise.
         """
         pattern = re.compile(r'^\d{1,2}[.:]\d{2}-\d{1,2}[.:]\d{2}$')
         return bool(pattern.match(input_str))
@@ -49,14 +83,14 @@ class Schedule:
     @staticmethod
     def _get_specs_in_str(input_string, specs):
         """
-        Extracts specialties mentioned in a string based on a given list of specialties.
+        Extracts specialties mentioned in a string and returns the cleaned string.
 
         Args:
-        - input_string (str): Input string containing information about specialties.
-        - specs (list): List of available specialties.
+            input_string (str): Input string.
+            specs (list): List of specialties.
 
         Returns:
-        - tuple: A tuple containing a list of extracted specialties and the modified input string.
+            tuple: Tuple containing a list of specialties found and the cleaned string.
         """
         pattern = r'\((.*?)\)'
         results = re.findall(pattern, input_string)
@@ -85,13 +119,13 @@ class Schedule:
     @staticmethod
     def _add_space_after_parenthesis(input_string):
         """
-        Adds a space after each closing parenthesis in the input string.
+        Adds a space after closing parenthesis if not present.
 
         Args:
-        - input_string (str): Input string.
+            input_string (str): Input string.
 
         Returns:
-        - str: Modified input string with spaces added after closing parentheses.
+            str: String with spaces added after closing parenthesis.
         """
         new_string = ''
         for char in input_string:
@@ -106,10 +140,10 @@ class Schedule:
         Extracts groups from the input string.
 
         Args:
-        - input_str (str): Input string containing information about groups.
+            input_str (str): Input string.
 
         Returns:
-        - list: List of extracted group numbers.
+            list: List of groups.
         """
         if "лекція" in input_str.lower():
             return ["Лекція"]
@@ -120,13 +154,13 @@ class Schedule:
     @staticmethod
     def _get_week_array(s):
         """
-        Parses a string representing weeks and returns an array of week numbers.
+        Processes the input string to get an array of weeks.
 
         Args:
-        - s (str): Input string representing weeks.
+            s (str): Input string.
 
         Returns:
-        - list: List of week numbers.
+            list: List of weeks.
         """
         if '-' in s or ',' in s:
             result_array = []
@@ -146,13 +180,13 @@ class Schedule:
     @staticmethod
     def _proccess_time_range(input_str: str):
         """
-        Processes a string representing a time range and returns a dictionary with start, end, and full time.
+        Processes the input string to get a dictionary of start, end, and full time.
 
         Args:
-        - input_str (str): Input string representing a time range.
+            input_str (str): Input time range string.
 
         Returns:
-        - dict: Dictionary containing start time, end time, and full time.
+            dict: Dictionary containing start, end, and full time.
         """
         match = re.findall(r'\d+', input_str)
 
@@ -170,13 +204,13 @@ class Schedule:
     @staticmethod
     def _proccess_room(input_str: str):
         """
-        Processes a string representing a room and returns the processed room information.
+        Processes the room information.
 
         Args:
-        - input_str (str): Input string representing a room.
+            input_str (str): Input room string.
 
         Returns:
-        - str: Processed room information.
+            str: Processed room information.
         """
         if input_str.lower() == 'д':
             return 'Дистанційно'
@@ -184,13 +218,17 @@ class Schedule:
 
     def _add_to_table(self, lesson_data, faculty, specs_of_faculty):
         """
-        Adds a lesson to the schedule table for a specific faculty and specialties.
+        Adds data to the schedule table.
 
         Args:
-        - lesson_data (list): List containing information about the lesson (day, time, subject, groups, weeks, room).
-        - faculty (str): Name of the faculty for which the lesson is being added.
-        - specs_of_faculty (list): List of specialties associated with the faculty.
+            lesson_data (list): List containing day, time, subject, groups, weeks, and room information.
+            faculty (str): Faculty name.
+            specs_of_faculty (list): List of specialties.
+
+        Returns:
+            None
         """
+
         day, time, subject, groups, weeks, room = lesson_data
 
         # found the specialties to which the subject belongs
@@ -223,10 +261,13 @@ class Schedule:
 
     def procces_excels(self, files: list):
         """
-        Processes Excel files to populate the _schedule_dict attribute with schedule data.
+        Processes Excel files and populates the schedule dictionary.
 
         Args:
-        - files (list): List of Excel file names.
+            files (list): List of Excel files to process.
+
+        Returns:
+            None
         """
         for file in files:
             try:
@@ -329,10 +370,11 @@ class Schedule:
 
     def save_to_json(self, output_file='schedule_output.json'):
         """
-        Saves the processed schedule data to a JSON file.
+        Saves the schedule dictionary to a JSON file.
 
         Args:
-        - output_file (str): Name of the output JSON file.
+            output_file (str): Output JSON file name.
+
         """
         try:
             with open(output_file, 'w', encoding='utf-16') as json_file:
@@ -341,15 +383,21 @@ class Schedule:
             print(f"Error: Unable to write to file {output_file}.")
 
     def get_schedule_dict(self):
+        """
+        Returns the schedule dictionary.
+
+        Returns:
+            dict: Schedule dictionary.
+        """
         return self._schedule_dict
 
 
 def parse_arguments():
     """
-    Parses command-line arguments.
+    Function to parse command-line arguments for the script.
 
     Returns:
-    - argparse.Namespace: An object containing parsed arguments.
+        argparse.Namespace: Parsed arguments.
     """
     parser = argparse.ArgumentParser(description='Process university schedules from Excel files.')
 
