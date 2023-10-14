@@ -1,3 +1,5 @@
+[![Version](https://badge.fury.io/gh/alexanderzobnin%2Fgrafana-zabbix.svg)](https://github.com/necobra/naukma_schedule/releases)
+
 # NaUKMA Schedule
  
 [Documentation](https://necobra.github.io/naukma_schedule/)
@@ -10,8 +12,7 @@
 ## Usage
 
 ```bash
-$ git clone https://github.com/necobra/
-$ naukma_schedule.git
+$ git clone https://github.com/necobra/naukma_schedule
 $ cd naukma_schedule
 $ pip install -r requirements.txt
 $ python main.py -f file1.xlsx file2.xlsx -o output_file.json
@@ -20,4 +21,4 @@ $ python main.py -f file1.xlsx file2.xlsx -o output_file.json
 
 ## Used libraries
 
-- `pandos` - manipulation of data in excel
+- `pandos` - Powerful data structures for data analysis, time series, and statistics
