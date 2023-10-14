@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>schedule package &mdash; Schedule-naukma 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=2709fde1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="main module" href="main.html" />
+    <link rel="prev" title="Welcome to Schedule-naukma’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Schedule-naukma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">schedule package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-schedule.schedule">schedule.schedule module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#schedule.schedule.Schedule"><code class="docutils literal notranslate"><span class="pre">Schedule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#schedule.schedule.Schedule.DAYS_NAME"><code class="docutils literal notranslate"><span class="pre">Schedule.DAYS_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#schedule.schedule.Schedule.get_schedule_dict"><code class="docutils literal notranslate"><span class="pre">Schedule.get_schedule_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#schedule.schedule.Schedule.procces_excels"><code class="docutils literal notranslate"><span class="pre">Schedule.procces_excels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#schedule.schedule.Schedule.save_to_json"><code class="docutils literal notranslate"><span class="pre">Schedule.save_to_json()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-schedule.utils">schedule.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#schedule.utils.add_space_after_parenthesis"><code class="docutils literal notranslate"><span class="pre">add_space_after_parenthesis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule.utils.extract_specialties_and_year"><code class="docutils literal notranslate"><span class="pre">extract_specialties_and_year()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule.utils.get_groups"><code class="docutils literal notranslate"><span class="pre">get_groups()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule.utils.get_specs_in_str"><code class="docutils literal notranslate"><span class="pre">get_specs_in_str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule.utils.get_week_array"><code class="docutils literal notranslate"><span class="pre">get_week_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule.utils.is_valid_time_range"><code class="docutils literal notranslate"><span class="pre">is_valid_time_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule.utils.proccess_room"><code class="docutils literal notranslate"><span class="pre">proccess_room()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#schedule.utils.proccess_time_range"><code class="docutils literal notranslate"><span class="pre">proccess_time_range()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-schedule">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Schedule-naukma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">schedule package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/schedule.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="schedule-package">
+<h1>schedule package<a class="headerlink" href="#schedule-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-schedule.schedule">
+<span id="schedule-schedule-module"></span><h2>schedule.schedule module<a class="headerlink" href="#module-schedule.schedule" title="Link to this heading"></a></h2>
+<p>Module for processing university schedules from Excel files.</p>
+<dl class="simple">
+<dt>Classes:</dt><dd><p>Schedule: Class for processing and storing university schedules.</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="schedule.schedule.Schedule">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">schedule.schedule.</span></span><span class="sig-name descname"><span class="pre">Schedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#schedule.schedule.Schedule" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for processing and storing university schedules.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>DAYS_NAME (list): List of day names.
+_schedule_dict (dict): Dictionary to store the processed schedule.</p>
+</dd>
+<dt>Methods:</dt><dd><p>__init__: Initializes the Schedule class.
+_add_to_table: Adds data to the schedule table.
+procces_excels: Processes Excel files and populates the schedule dictionary.
+save_to_json: Saves the schedule dictionary to a JSON file.
+get_schedule_dict: Returns the schedule dictionary.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="schedule.schedule.Schedule.DAYS_NAME">
+<span class="sig-name descname"><span class="pre">DAYS_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Понеділок',</span> <span class="pre">'Вівторок',</span> <span class="pre">'Середа',</span> <span class="pre">'Четвер',</span> <span class="pre">'П`ятниця',</span> <span class="pre">'Субота',</span> <span class="pre">'Неділя']</span></em><a class="headerlink" href="#schedule.schedule.Schedule.DAYS_NAME" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="schedule.schedule.Schedule.get_schedule_dict">
+<span class="sig-name descname"><span class="pre">get_schedule_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#schedule.schedule.Schedule.get_schedule_dict" title="Link to this definition"></a></dt>
+<dd><p>Returns the schedule dictionary.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>dict: Schedule dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="schedule.schedule.Schedule.procces_excels">
+<span class="sig-name descname"><span class="pre">procces_excels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#schedule.schedule.Schedule.procces_excels" title="Link to this definition"></a></dt>
+<dd><p>Processes Excel files and populates the schedule dictionary.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>files (list): List of Excel files to process.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="schedule.schedule.Schedule.save_to_json">
+<span class="sig-name descname"><span class="pre">save_to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'schedule_output.json'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#schedule.schedule.Schedule.save_to_json" title="Link to this definition"></a></dt>
+<dd><p>Saves the schedule dictionary to a JSON file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>output_file (str): Output JSON file name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-schedule.utils">
+<span id="schedule-utils-module"></span><h2>schedule.utils module<a class="headerlink" href="#module-schedule.utils" title="Link to this heading"></a></h2>
+<p>This module provides functions for extracting and processing information related to schedule</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="schedule.utils.add_space_after_parenthesis">
+<span class="sig-prename descclassname"><span class="pre">schedule.utils.</span></span><span class="sig-name descname"><span class="pre">add_space_after_parenthesis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#schedule.utils.add_space_after_parenthesis" title="Link to this definition"></a></dt>
+<dd><p>Adds a space after closing parenthesis if not present.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>input_string (str): Input string.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: String with spaces added after closing parenthesis.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="schedule.utils.extract_specialties_and_year">
+<span class="sig-prename descclassname"><span class="pre">schedule.utils.</span></span><span class="sig-name descname"><span class="pre">extract_specialties_and_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#schedule.utils.extract_specialties_and_year" title="Link to this definition"></a></dt>
+<dd><p>Extracts specialties and study year from a text.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>text (str): Input text.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Tuple: List of specialties and the study year.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="schedule.utils.get_groups">
+<span class="sig-prename descclassname"><span class="pre">schedule.utils.</span></span><span class="sig-name descname"><span class="pre">get_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#schedule.utils.get_groups" title="Link to this definition"></a></dt>
+<dd><p>Extracts groups from the input string.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>input_str (str): Input string.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List: List of groups.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="schedule.utils.get_specs_in_str">
+<span class="sig-prename descclassname"><span class="pre">schedule.utils.</span></span><span class="sig-name descname"><span class="pre">get_specs_in_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#schedule.utils.get_specs_in_str" title="Link to this definition"></a></dt>
+<dd><p>Extracts specialties mentioned in a string and returns the cleaned string.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>input_string (str): Input string.
+specs (List): List of specialties.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Tuple: List of specialties found and the cleaned string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="schedule.utils.get_week_array">
+<span class="sig-prename descclassname"><span class="pre">schedule.utils.</span></span><span class="sig-name descname"><span class="pre">get_week_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#schedule.utils.get_week_array" title="Link to this definition"></a></dt>
+<dd><p>Processes the input string to get an array of weeks.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>s (str): Input string.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List: List of weeks.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="schedule.utils.is_valid_time_range">
+<span class="sig-prename descclassname"><span class="pre">schedule.utils.</span></span><span class="sig-name descname"><span class="pre">is_valid_time_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#schedule.utils.is_valid_time_range" title="Link to this definition"></a></dt>
+<dd><p>Checks if the input string is a valid time range.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>input_str (str): Input time range string.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the input is a valid time range, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="schedule.utils.proccess_room">
+<span class="sig-prename descclassname"><span class="pre">schedule.utils.</span></span><span class="sig-name descname"><span class="pre">proccess_room</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#schedule.utils.proccess_room" title="Link to this definition"></a></dt>
+<dd><p>Processes the room information.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>input_str (str): Input room string.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Processed room information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="schedule.utils.proccess_time_range">
+<span class="sig-prename descclassname"><span class="pre">schedule.utils.</span></span><span class="sig-name descname"><span class="pre">proccess_time_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#schedule.utils.proccess_time_range" title="Link to this definition"></a></dt>
+<dd><p>Processes the input string to get a dictionary of start, end, and full time.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>input_str (str): Input time range string.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Dictionary containing start, end, and full time.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-schedule">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-schedule" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Schedule-naukma’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="main.html" class="btn btn-neutral float-right" title="main module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Oleksandr Baiush.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
