@@ -12,7 +12,7 @@ def parse_arguments():
     """
     parser = argparse.ArgumentParser(description='Process university schedules from Excel files.')
 
-    parser.add_argument('files', metavar='file', type=str, nargs='+',
+    parser.add_argument('-f', '--files', metavar='file', type=str, nargs='+',
                         help='Excel file(s) to process')
     parser.add_argument('-o', '--output', metavar='output_file', type=str,
                         help='Output JSON file to save the processed schedule')
