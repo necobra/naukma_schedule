@@ -1,9 +1,9 @@
-.. Schedule-naukma documentation master file, created by
-   sphinx-quickstart on Fri Oct 13 19:39:16 2023.
+.. Naukma-schedule documentation master file, created by
+   sphinx-quickstart on Sat Oct 14 19:18:50 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Schedule-naukma's documentation!
+Welcome to Naukma-schedule's documentation!
 ===========================================
 
 .. toctree::
@@ -12,7 +12,6 @@ Welcome to Schedule-naukma's documentation!
 
    schedule
    main
-
 
 Indices and tables
 ==================
